@@ -1,0 +1,168 @@
+
+<?php
+$ajax_cart		 						= Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/ajax_cart', $storeId); 
+$_helper = $this->helper('catalog/output');
+$homepage_gallery_type										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryinfotype', $storeId);    
+$homepage_slideshow_type									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/slideshow_type', $storeId);   
+
+$homepage_gallery_product_type								=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryproductstype', $storeId); 
+$homepage_gallery_product_limit								=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryprodcutlimit', $storeId));  
+$homepage_gallery_type										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryinfotype', $storeId);   
+$homegallery_slideshow_3_thumb		=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_thumb', $storeId));  
+//Home page image
+$media_path													= Mage::getBaseUrl('media') . 'images/';
+$homegalleryimage_1											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_1', $storeId); 
+$homegalleryimage_2											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_2', $storeId); 
+$homegalleryimage_3											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_3', $storeId); 
+$homegalleryimage_4											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_4', $storeId); 
+$homegalleryimage_5											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_5', $storeId); 
+//Title
+$homegalleryimagetitle_1									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_1', $storeId); 
+$homegalleryimagetitle_2									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_2', $storeId); 
+$homegalleryimagetitle_3									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_3', $storeId); 
+$homegalleryimagetitle_4									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_4', $storeId); 
+$homegalleryimagetitle_5									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_5', $storeId); 
+//Content
+$homegalleryimagetext_1										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_1', $storeId); 
+$homegalleryimagetext_2										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_2', $storeId); 
+$homegalleryimagetext_3										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_3', $storeId); 
+$homegalleryimagetext_4										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_4', $storeId); 
+$homegalleryimagetext_5										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_5', $storeId); 
+
+?>
+<!-- Products type -->
+
+<?php
+if($homepage_slideshow_type==1):
+?>
+<?php
+$homegallery_slideshow_3_thumb		=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_thumb', $storeId));  
+if($homegallery_slideshow_3_thumb == 1): ?>
+<style>
+.flexslider {margin-bottom: 20px;}
+</style>
+<?php endif;?>
+<div class="home-gallery-container">
+	<div class="home-gallery default-slider">	
+		<div class="flexslider">
+		  <ul class="slides">
+		  <?php if($homegalleryimage_1):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_1?>&w=70&h=70">
+		      <img src="<?php echo $media_path.$homegalleryimage_1?>" />
+		      <?php echo $homegalleryimagetext_1;?>
+		    </li>
+		 <?php endif;?>   
+		  <?php if($homegalleryimage_2):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_2?>&w=70&h=70">
+		      <img src="<?php echo $media_path.$homegalleryimage_2?>" />
+		      <?php echo $homegalleryimagetext_2;?>
+		    </li>
+		 <?php endif;?> 
+		  <?php if($homegalleryimage_3):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_3?>&w=70&h=70">
+		      <img src="<?php echo $media_path.$homegalleryimage_3?>" />
+		      <?php echo $homegalleryimagetext_3;?>
+		    </li>
+		 <?php endif;?>
+		  <?php if($homegalleryimage_4):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_4?>&w=70&h=70">
+		      <img src="<?php echo $media_path.$homegalleryimage_4?>" />
+		      <?php echo $homegalleryimagetext_4;?>
+		    </li>
+		 <?php endif;?> 	
+		  <?php if($homegalleryimage_5):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_5?>&w=70&h=70">
+		      <img src="<?php echo $media_path.$homegalleryimage_5?>" />
+		      <?php echo $homegalleryimagetext_5;?>
+		    </li>
+		 <?php endif;?> 		 	  		 
+		  </ul>
+		</div>
+		<div class="home-banner-right">
+			<?php if ($block_3_home_banner_right = $this->getLayout()->createBlock('cms/block')->setBlockId('block_3_home_banner_right')->toHtml()): ?>
+					<?php echo $block_3_home_banner_right; ?>
+				<?php endif;?>
+		</div>
+	</div>
+</div>
+	<?php elseif($homepage_slideshow_type==2):?>
+		<div class="home-camera-slider camera_white_skin">
+						<?php if($homegalleryimage_2):?>
+            <div data-src="<?php echo $media_path.$homegalleryimage_1?>">
+            <div class="fadeIn camera_effected"><div class="camera-caption"><?php echo $homegalleryimagetext_1?></div></div>
+            </div>
+            <?endif;?>
+						<?php if($homegalleryimage_2):?>
+            <div data-src="<?php echo $media_path.$homegalleryimage_2?>">
+             <div class="fadeIn camera_effected"><div class="camera-caption"><?php echo $homegalleryimagetext_2?></div></div>
+            </div>
+            <?endif;?>            
+						<?php if($homegalleryimage_3):?>
+            <div data-src="<?php echo $media_path.$homegalleryimage_3?>">
+             <div class="fadeIn camera_effected"><div class="camera-caption"><?php echo $homegalleryimagetext_3?></div></div>
+           </div>
+            <?endif;?>
+						<?php if($homegalleryimage_4):?>
+            <div data-src="<?php echo $media_path.$homegalleryimage_4?>">
+             <div class="fadeIn camera_effected"><div class="camera-caption"><?php echo $homegalleryimagetext_4?></div></div>
+            
+            </div>
+            <?endif;?>
+						<?php if($homegalleryimage_5):?>
+            <div data-src="<?php echo $media_path.$homegalleryimage_5?>">
+             <div class="fadeIn camera_effected"><?php echo $homegalleryimagetext_5?></div>
+             <div class="fadeIn camera_effected"><div class="camera-caption"><?php echo $homegalleryimagetext_5?></div></div>
+            <?endif;?>
+      </div>
+</div>
+<?php elseif($homepage_slideshow_type==3):?>	
+<?php
+$homegallery_slideshow_3_thumb		=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_thumb', $storeId));  
+if($homegallery_slideshow_3_thumb == 1): ?>
+<style>
+.flexslider {margin-bottom: 20px;}
+</style>
+<?php endif;?>
+<div class="home-gallery-container">
+	<div class="home-gallery">	
+		<div class="flexslider">
+		  <ul class="slides">
+		  <?php if($homegalleryimage_1):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_1?>&w=70&h=70">
+		      <img src="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_1?>&w=980&h=390" />
+		      <?php echo $homegalleryimagetext_1;?>
+		    </li>
+		 <?php endif;?>   
+		  <?php if($homegalleryimage_2):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_2?>&w=70&h=70">
+		      <img src="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_2?>&w=980&h=390" />
+		      <?php echo $homegalleryimagetext_2;?>
+		    </li>
+		 <?php endif;?> 
+		  <?php if($homegalleryimage_3):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_3?>&w=70&h=70">
+		      <img src="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_3?>&w=980&h=390" />
+		      <?php echo $homegalleryimagetext_3;?>
+		    </li>
+		 <?php endif;?>
+		  <?php if($homegalleryimage_4):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_4?>&w=70&h=70">
+		      <img src="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_4?>&w=980&h=390" />
+		      <?php echo $homegalleryimagetext_4;?>
+		    </li>
+		 <?php endif;?> 	
+		  <?php if($homegalleryimage_5):?>
+		    <li data-thumb="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_5?>&w=70&h=70">
+		      <img src="<?php echo $this->getSkinUrl('images/timthumb.php') ?>?src=<?php echo $media_path.$homegalleryimage_5?>&w=980&h=390" />
+		      <?php echo $homegalleryimagetext_5;?>
+		    </li>
+		 <?php endif;?> 		 	  		 
+		  </ul>
+		</div>
+	</div>
+</div>
+<?php endif;?>
+
+
+
+

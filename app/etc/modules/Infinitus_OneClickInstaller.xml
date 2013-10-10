@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinitus_OneClickInstaller>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Infinitus_OneClickInstaller>
+    </modules>
+</config>

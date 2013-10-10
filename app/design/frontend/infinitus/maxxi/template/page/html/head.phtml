@@ -1,0 +1,312 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$pageLayout=$this->getLayout()->getBlock('root')->getTemplate(); 
+$page = Mage::app()->getFrontController()->getRequest()->getRouteName();
+if ($page == 'cms'):
+    $is_home=(Mage::getSingleton('cms/page')->getIdentifier()== Mage::getStoreConfig('web/default/cms_home_page')) ? true :false;
+endif;  
+//var_dump($is_home);
+//die();
+$responsive_layoyut					=	Mage::getStoreConfig('themeoptions_general/general_options/responsive_layout', $storeId);
+$homepage_gallery_status					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/status', $storeId);
+$homepage_slideshow_type					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/slideshow_type', $storeId);   
+$homepage_gallery_type						=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryinfotype', $storeId);   
+
+$homepage_gallery_circular					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_circular', $storeId);  
+$homepage_gallery_infinite					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_infinite', $storeId);  
+$homegallery_products_carousel_scroll_items				=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_scroll_items', $storeId)); 
+$homegallery_products_carousel_auto								=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_auto', $storeId); 
+$homegallery_products_carousel_easing							=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_easing', $storeId); 
+$homegallery_products_carousel_duration						=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_duration', $storeId)); 
+$homegallery_products_carousel_pause							=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_products_carousel_pause', $storeId);  
+
+
+if($homepage_gallery_circular == 1 ) {
+	$homepage_gallery_circular = 'true';
+}else{
+	$homepage_gallery_circular = 'false';
+}
+if($homepage_gallery_infinite == 1 ) {
+	$homepage_gallery_infinite = 'true';
+}else{
+	$homepage_gallery_infinite = 'false';
+}
+if($homegallery_products_carousel_auto == 1 ) {
+	$homegallery_products_carousel_auto = 'true';
+}else{
+	$homegallery_products_carousel_auto = 'false';
+}
+if($homegallery_products_carousel_pause == 1 ) {
+	$homegallery_products_carousel_pause = 'true';
+}else{
+	$homegallery_products_carousel_pause = 'false';
+}
+?>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<?php if($responsive_layoyut):?>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php endif; ?>
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/_infinitus-custom.php')?>?storeid=<?php echo Mage::app()->getStore()->getStoreId();?>" media="all" />
+<?php if($responsive_layoyut):?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/responsive.css')?>" media="all" />
+<?php endif; ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+<?php if($pageLayout!='page/empty.phtml'):?>
+<?php 
+if (Mage::getStoreConfig('imagezoomconfig/general/zoomclound_enable')) {
+$css = '
+					<style type="text/css">
+						.cloud-zoom-lens {
+							border: '.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/lens_border').'px solid '.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/lens_border_color').';
+							margin:-'.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/lens_border').'px;	/* Set this to minus the border thickness. */
+							background-color: '.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/lens_background_color').';	
+						}
+						.cloud-zoom-big {
+							border: '.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/zoom_window_border').'px solid '.Mage::getStoreConfig('imagezoomconfig/imagezoom_style_css/zoom_window_border_color').';
+						}
+					</style>
+				';
+echo $css;
+}
+?>	
+<?php if($homepage_gallery_status == 1 && $is_home):?>
+<script type="text/javascript" language="javascript">		
+<?php if($homepage_slideshow_type == 1|| $homepage_slideshow_type==3): ?>
+<?php
+$homegallery_slideshow_3_thumb		=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_thumb', $storeId));  
+$homepage_slideshow_3_auto					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_auto', $storeId);  
+$homepage_slideshow_3_auto_timer		=	intval(Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_auto_timer', $storeId));  
+$homegallery_slideshow_3_type					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_type', $storeId);  
+$homegallery_slideshow_3_easing					=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_3_easing', $storeId);  
+
+if($homepage_slideshow_3_auto == 1 ) {
+	$homepage_slideshow_3_auto = 'true';
+}else{
+	$homepage_slideshow_3_auto = 'false';
+}
+?>
+// Can also be used with $(document).ready()
+jQuery(window).load(function() {
+  jQuery('.flexslider').flexslider({
+    animation: "<?php echo $homegallery_slideshow_3_type;?>",
+    easing: "<?php echo $homegallery_slideshow_3_easing;?>",
+    slideshow: <?php echo $homepage_slideshow_3_auto;?>,
+    slideshowSpeed: <?php echo $homepage_slideshow_3_auto_timer;?>,
+    start: function(slider) {
+          slider.controlNav.removeClass(namespace + "active2").eq(slider.animatingTo).addClass(namespace + "active2"); 
+        }    
+    <?php if($homegallery_slideshow_3_thumb==1):?>
+    ,controlNav: "thumbnails"
+    <?php else:?>
+    ,controlNav:false
+    <?php endif; ?>
+  });
+});					
+<?php endif; ?>
+</script>
+<?php if($homepage_slideshow_type==2): ?>
+<?php
+//Home page image
+$media_path													= Mage::getBaseUrl('media') . 'images/';
+$homegalleryimage_1											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_1', $storeId); 
+$homegalleryimage_2											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_2', $storeId); 
+$homegalleryimage_3											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_3', $storeId); 
+$homegalleryimage_4											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_4', $storeId); 
+$homegalleryimage_5											=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimage_5', $storeId); 
+//Title
+$homegalleryimagetitle_1									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_1', $storeId); 
+$homegalleryimagetitle_2									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_2', $storeId); 
+$homegalleryimagetitle_3									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_3', $storeId); 
+$homegalleryimagetitle_4									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_4', $storeId); 
+$homegalleryimagetitle_5									=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetitle_5', $storeId); 
+//Content
+$homegalleryimagetext_1										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_1', $storeId); 
+$homegalleryimagetext_2										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_2', $storeId); 
+$homegalleryimagetext_3										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_3', $storeId); 
+$homegalleryimagetext_4										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_4', $storeId); 
+$homegalleryimagetext_5										=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegalleryimagetext_5', $storeId); 
+$camera_fx = Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_default_fx', $storeId);
+$camera_loader = Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/homegallery_slideshow_default_loader', $storeId);
+
+ ?>
+<script type="text/javascript" src = "<?php echo $this->helper('core/js')->getJsUrl('infinitus/jquery.mobile.customized.min.js') ?>"></script>
+<script type="text/javascript" src = "<?php echo $this->helper('core/js')->getJsUrl('infinitus/camera.min.js') ?>"></script>
+<script type="text/javascript">
+		jQuery(function(){
+			jQuery('.home-camera-slider').camera({
+				fx: '<?php echo $camera_fx?>',
+				loader: '<?php echo $camera_loader?>',
+				height:'auto',
+				pagination: false,
+				thumbnails: false,
+				hover: false,
+				opacityOnGrid: false
+			});
+
+		});
+	</script>
+<?php endif; ?>
+<?php endif; ?>
+<?php
+	$first_status 					= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/first_status', $storeId));
+	$second_status 					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/second_status', $storeId));
+	$third_status					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/third_status', $storeId));
+	$homesliderstype_1_1		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_1', $storeId));
+	$homesliderstype_1_2		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_2', $storeId));
+	$homesliderstype_1_3		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_3', $storeId));
+
+	$productseachrow_1_1				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_1', $storeId));
+	$productseachrow_1_2				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_2', $storeId));
+	$productseachrow_1_3				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_3', $storeId));
+	$thumb_width_3 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_width_3', $storeId));
+	$thumb_width_4 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_width_4', $storeId));	
+?>
+<?php if(($first_status==1)&& ($homesliderstype_1_1==2)):?>
+<?php
+$productseachrow_1_1				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_1', $storeId));
+ if($productseachrow_1_1==4) {
+	 $thumb_width1 = $thumb_width_3;
+ }elseif($productseachrow_1_1==5) {
+	 $thumb_width1 = $thumb_width_4;
+ }
+?>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(function($) {
+		$('.product-flexslider .slider-items').flexslider({
+			namespace: "",
+			animation: "slide",
+			easing: "easeInQuart",
+			animationLoop: false,
+			slideshow: false,
+			animationSpeed: 400,						
+			pauseOnHover: true,
+			controlNav: false,
+			controlsContainer: ".product-flexslider .nav-wrapper",
+			<?php if($productseachrow_1_1==4) :?>
+			itemWidth: <?php echo $thumb_width1+20?>			
+			<?php else:?>
+			itemWidth: (jQuery(".home-content").width() <= 730 ? <?php echo $thumb_width1+14+10?> : <?php echo $thumb_width1+14+15?>)	
+			<?php endif?>
+		});
+	});
+//]]>
+</script>
+<?php endif; ?>
+<?php if(($second_status==1)&&($homesliderstype_1_2==2)):?>
+<?php
+$productseachrow_1_2				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_2', $storeId));
+ if($productseachrow_1_2==4) {
+	 $thumb_width2 = $thumb_width_3;
+ }elseif($productseachrow_1_2==5) {
+	 $thumb_width2 = $thumb_width_4;
+ }
+?>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(function($) {
+		$('.product-flexslider-2 .slider-items').flexslider({
+			namespace: "",
+			animation: "slide",
+			easing: "easeInQuart",
+			animationLoop: false,
+			slideshow: false,
+			animationSpeed: 400,						
+			pauseOnHover: true,
+			controlNav: false,
+			controlsContainer: ".product-flexslider-2 .nav-wrapper",
+			<?php if($productseachrow_1_2==4) :?>
+			itemWidth: <?php echo $thumb_width2+20?>			
+			<?php else:?>
+			itemWidth: (jQuery(".home-content").width() <= 730 ? <?php echo $thumb_width2+14+10?> : <?php echo $thumb_width2+14+15?>)	
+			<?php endif?>
+		});
+	});
+//]]>
+</script>
+<?php endif; ?>
+<?php if(($third_status==1)&&($homesliderstype_1_3==2)):?>
+<?php
+$productseachrow_1_3				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_3', $storeId));
+ if($productseachrow_1_3==4) {
+	 $thumb_width3 = $thumb_width_3;
+ }elseif($productseachrow_1_3==5) {
+	 $thumb_width3 = $thumb_width_4;
+ }
+?>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(function($) {
+		$('.product-flexslider-3 .slider-items').flexslider({
+			namespace: "",
+			animation: "slide",
+			easing: "easeInQuart",
+			animationLoop: false,
+			slideshow: false,
+			animationSpeed: 400,						
+			pauseOnHover: true,
+			controlNav: false,
+			controlsContainer: ".product-flexslider-3 .nav-wrapper",
+			<?php if($productseachrow_1_3==4) :?>
+			itemWidth: <?php echo $thumb_width3+20?>			
+			<?php else:?>
+			itemWidth: (jQuery(".home-content").width() <= 730 ? <?php echo $thumb_width3+14+10?> : <?php echo $thumb_width3+14+15?>)	
+			<?php endif?>
+		});
+	});
+//]]>
+</script>
+<?php endif; ?>
+<?php endif; ?>
+<script>
+	 // DOM ready
+	 jQuery(function() {
+      jQuery(".dropdown-phone").change(function() {
+        window.location = jQuery(this).find("option:selected").val();
+      });
+	 
+	 });
+	</script>

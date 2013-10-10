@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Infinitus_Ajaxglobalmessages>
+            <version>1.0.0</version>
+        </Infinitus_Ajaxglobalmessages>
+    </modules>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <infinitus_ajaxglobalmessages>
+                    <file>ajaxglobalmessages.xml</file>
+                </infinitus_ajaxglobalmessages>
+            </updates>
+        </layout>
+    </frontend>
+</config>

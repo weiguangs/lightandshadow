@@ -1,0 +1,263 @@
+<?php
+$first_status 					= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/first_status', $storeId));
+$second_status 					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/second_status', $storeId));
+$third_status					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/third_status', $storeId));
+if($first_status):
+$homecoltitle_1_1 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_1', $storeId);
+$homeinfostype_1_1 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_1', $storeId);
+$homeproductstype_1_1		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_1', $storeId);
+$productsamount_1_1			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_1', $storeId);
+$homesliderstype_1_1		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_1', $storeId));
+$homecustomblock_1_1		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_1', $storeId);
+$ajax_cart		 						= Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/ajax_cart', $storeId); 
+if($homeinfostype_1_1 == 1) :
+    if ($homeproductstype_1_1 == 'new'):
+    
+    $_products = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_1);    
+    elseif ($homeproductstype_1_1 == 'bestsellers'):
+    
+    $_products = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_1);
+    
+    else:
+    
+    $_products = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_1))
+    ->setPageSize($productsamount_1_1);
+    endif;
+endif;  
+endif; 
+if($second_status):
+$homecoltitle_1_2 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_2', $storeId);
+$homeinfostype_1_2 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_2', $storeId);
+$homeproductstype_1_2		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_2', $storeId);
+$productsamount_1_2			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_2', $storeId);
+$homesliderstype_1_2		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_2', $storeId));
+$homecustomblock_1_2		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_2', $storeId);
+if($homeinfostype_1_2 == 1) :
+    if ($homeproductstype_1_2 == 'new'):
+    
+    $_products_2 = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_2);   
+    elseif ($homeproductstype_1_2 == 'bestsellers'):
+    
+    $_products_2 = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_2);
+    
+    else:
+    
+    $_products_2 = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_2))
+    ->setPageSize($productsamount_1_2);
+    endif;
+endif; 
+endif; 
+if($third_status):
+$homecoltitle_1_3 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_3', $storeId);
+$homeinfostype_1_3 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_3', $storeId);
+$homeproductstype_1_3		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_3', $storeId);
+$productsamount_1_3			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_3', $storeId);
+$homesliderstype_1_3		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_3', $storeId));
+$homecustomblock_1_3		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_3', $storeId);
+if($homeinfostype_1_3 == 1) :
+    if ($homeproductstype_1_3 == 'new'):
+    
+    $_products_3 = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_3);    
+    elseif ($homeproductstype_1_3 == 'bestsellers'):
+    
+    $_products_3 = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_3);
+    
+    else:
+    
+    $_products_3 = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_3))
+    ->setPageSize($productsamount_1_3);
+    endif;
+endif; 
+endif;
+?>
+<div class="home-content-container">
+	<div class="home-content">	
+<?php if($first_status):?>	
+	<div class="first-row">
+	<?php if($homecoltitle_1_1):?><h3 class="title"><?php echo $this->__($homecoltitle_1_1) ?></h3><?php endif;?>
+	<?php if($homeinfostype_1_1==1):?>
+		<?php if ($_products->getSize()): ?>
+			<?php if($homesliderstype_1_1==1):?>
+				<?php include("products-list.phtml"); ?>
+			<?php elseif($homesliderstype_1_1==2):?>
+				<?php include("products-list-slider.phtml"); ?>
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php else: ?>
+	    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_1)->toHtml()): ?>
+		    	<?php echo $custom_block; ?>
+		    <?php else:?>
+		    	<div class="demo-block-place">Add your static block here</div>	
+		    <?php endif;?>			
+	<?php endif; ?>
+	</div>
+<?php endif; ?>
+
+<?php if($second_status):?>	
+	<div class="second-row">
+	<?php if($homecoltitle_1_2):?><h3 class="title"><?php echo $this->__($homecoltitle_1_2) ?></h3><?php endif;?>
+	<?php if($homeinfostype_1_2==1):?>
+		<?php if ($_products_2->getSize()): ?>
+			<?php if($homesliderstype_1_2==1):?>
+				<?php include("products-list-2.phtml"); ?>
+			<?php elseif($homesliderstype_1_2==2):?>
+				<?php include("products-list-slider-2.phtml"); ?>
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php else: ?>
+	    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_2)->toHtml()): ?>
+		    	<?php echo $custom_block; ?>
+		    <?php endif;?>			
+	<?php endif; ?>
+	</div>
+<?php endif; ?>
+
+<?php if($third_status):?>	
+	<div class="second-row">
+	<?php if($homecoltitle_1_3):?><h3 class="title"><?php echo $this->__($homecoltitle_1_3) ?></h3><?php endif;?>
+	<?php if($homeinfostype_1_3==1):?>
+		<?php if ($_products_3->getSize()): ?>
+			<?php if($homesliderstype_1_3==1):?>
+				<?php include("products-list-3.phtml"); ?>
+			<?php elseif($homesliderstype_1_3==2):?>
+				<?php include("products-list-slider-3.phtml"); ?>
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php else: ?>
+	    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_3)->toHtml()): ?>
+		    	<?php echo $custom_block; ?>
+		    <?php endif;?>			
+	<?php endif; ?>
+	</div>
+<?php endif; ?>
+<?php if ($block_brand_list = $this->getLayout()->createBlock('cms/block')->setBlockId('block_brand_list')->toHtml()): ?>
+<div class="brand-slider-container">
+	<div class="brand-slider">
+<h3 class="title">Brands List</h3>
+<div class="brand-list">
+			<?php echo $block_brand_list; ?>	
+	</div>
+</div>
+</div>
+			<?php endif;?>		
+				</div>
+</div>
+
+<script type="text/javascript">
+	jQuery.noConflict();
+		jQuery(window).load(function() {
+			jQuery('.brand-list').flexslider({
+			namespace: "brand-list-",
+			animation: "slide",
+			easing: "easeInQuart",
+			animationLoop: false,
+			slideshow: false,
+			animationSpeed: 400,						
+			pauseOnHover: true,
+			controlNav: false,
+			itemWidth: 225,
+			itemMargin: 0
+		  });
+		});
+</script>
+<?php if($ajax_cart):?>    
+<script type="text/javascript">
+//<![CDATA[
+	jQuery.noConflict();
+			jQuery(document).ready(function(){
+				jQuery('.colorbox').live('mouseenter', function(){
+					jQuery(this).colorbox({
+					iframe:true,
+					opacity:	0.5, 
+					width:"402", 
+					height:"200"
+					});
+				});	
+			});	
+	function setAjaxData(data,iframe){
+		if(data.status == 'ERROR'){
+			alert(data.message);
+		}else{
+			if(jQuery('.header-right .mini-cart')){
+	            jQuery('.header-right .mini-cart').replaceWith(data.sidebar);
+	        }
+					// Shopping cart dropdown		
+					jQuery(".header-right .mini-cart").hover(function() {
+							jQuery(this).addClass('hover');
+							jQuery(".header-right .mini-cart .block-content").stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
+						}, function() {
+							jQuery(".header-right .mini-cart .block-content").stop(true, true).delay(300).fadeOut(500, "easeInCubic");
+					});	 
+					jQuery.colorbox.close();        
+	        
+		}
+	}
+	function setAjaxData2(data,iframe){
+		if(data.status == 'ERROR'){
+			alert(data.message);
+		}else{
+			if(jQuery('.header-right .mini-cart')){
+	            jQuery('.header-right .mini-cart').replaceWith(data.sidebar);
+	        }
+					// Shopping cart dropdown		
+					jQuery(".header-right .mini-cart").hover(function() {
+							jQuery(this).addClass('hover');
+							jQuery(".header-right .mini-cart .block-content").stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
+						}, function() {
+							jQuery(".header-right .mini-cart .block-content").stop(true, true).delay(300).fadeOut(500, "easeInCubic");
+					});	 
+					      
+	        
+		}
+	}	
+	function closebox(){
+		jQuery.colorbox.close(); 
+	}
+        function setLocationAjax(url,id){
+            url += 'isAjax/1';
+            url = url.replace("checkout/cart","ajax/index");
+            var msgHtml;
+            var productImg = jQuery('#imgaddtocart' + id).html();
+            var windowOver = jQuery('#addedoverlay');
+            var windowBox = jQuery('#added');
+            var titleForBox = jQuery('#productname' + id).text();
+            jQuery.colorbox({html:'<div id="cboxLoadingGraphic" style="width:32px;height:32px;"></div>',width:32,height:32,opacity:0.5,onLoad: function() {jQuery('#cboxClose').remove();}});  
+            try {
+                jQuery.ajax( {
+                    url : url,
+                    dataType : 'json',
+                    success : function(data) {
+                        if(data.status == 'SUCCESS'){    
+                            jQuery.colorbox({html:'<div class="added-content"><div style="float:left;padding: 0 8px 13px 0;">' + productImg + '</div><h3>' + titleForBox + '</h3> <?php echo $this->__('was successfully added to your shopping cart.') ?><div style="clear:both;"></div><button id="hidewindow" onclick="closebox()" class="button" title="<?php echo $this->__('Continue shopping') ?>" type="button" style="background-color: #818181;margin-right:5px;"><span><span><?php echo $this->__('Continue shopping') ?></span></span></button><button onclick="setLocation(\'<?php echo $this->getUrl('checkout/cart')?>\')" class="button" title="<?php echo $this->__('View cart & checkout') ?>" type="button"><span><span><?php echo $this->__('View cart & checkout') ?></span></span></button></div>',opacity:0.5,onLoad: function() {jQuery('#cboxClose').remove();}});             
+                        }else{
+                            jQuery.colorbox({html:'<div class="added-content"><p class="error-msg" style="margin-bottom:15px;">' + data.message + '</p><button id="hidewindow" onclick="closebox()" class="button" title="<?php echo $this->__('Continue shopping') ?>" type="button" style="background-color: #818181;margin-right:5px;"><span><span><?php echo $this->__('Continue shopping') ?></span></span></button><button onclick="setLocation(\'<?php echo $this->getUrl('checkout/cart')?>\')" class="button" title="<?php echo $this->__('View cart & checkout') ?>" type="button"><span><span><?php echo $this->__('View cart & checkout') ?></span></span></button></div>',opacity:0.5,onLoad: function() {jQuery('#cboxClose').remove();}});
+                        }   
+                              
+                        setAjaxData2(data,false);
+                            
+                    }
+                });
+            } catch (e) {
+            }
+        }
+ //]]>       
+</script>
+<?php endif; ?>

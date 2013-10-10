@@ -1,0 +1,44 @@
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  background-image: url("../images/e-commerce-icons.png");
+  background-repeat: no-repeat;
+  margin-right: .3em;
+  vertical-align: middle;
+  text-indent: -99999px;
+}
+.icon-facebook {
+	background-position: -14px 0;
+	width: 14px;
+	height: 26px;
+}
+.icon-twitter {
+	background-position: -38px 0;
+	width: 22px;
+	height: 26px;
+}
+.icon-rss {
+	background-position: -72px 0;
+	width: 27px;
+	height: 26px;
+}
+.icon-minus {
+	background-position: -106px 0;
+	width: 23px;
+	height: 26px;
+}
+.icon-plus {
+	background-position: -174px 0;
+	width: 19px;
+	height: 24px;
+}
+.icon-plus {
+	background-position: -174px 0;
+	width: 19px;
+	height: 24px;
+}
+.icon-shipping {
+	background-position: -274px -518px;
+	width: 35px;
+	height: 26px;
+}
