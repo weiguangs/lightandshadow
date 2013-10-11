@@ -1646,7 +1646,7 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 .block {margin:0 0 10px;}
 .block .block-title {padding:5px 0;}
 .block-title strong {
-	font:normal 20px/20px 'BebasRegular', Helvetica, sans-serif; 
+	font:normal 16px/16px 'Times New Roman', serif; 
 	min-height:20px; 
 	padding:1px 0 1px; 
 	color:#545454; 

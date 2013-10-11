@@ -36,9 +36,9 @@
 
     <catalog_category_layered_nochildren translate="label">
         <label>Catalog Category (Without Subcategories)</label>
-        <remove name="left.reports.product.viewed" />
-        <reference name="left">
+        <!--<remove name="left.reports.product.viewed" />-->
+        <!--<reference name="left">
             <block type="reports/product_viewed" after="tags_popular" name="left.reports.product.viewed" template="reports/product_viewed.phtml" />
-        </reference>
+        </reference>-->
     </catalog_category_layered_nochildren>
 </layout>

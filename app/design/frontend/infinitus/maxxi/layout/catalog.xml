@@ -65,7 +65,7 @@ Category default layout
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
         </reference>        
         <reference name="left">
-        		<block type="catalog/leftnavigation" name="catalog.leftcat" before="-" template="catalog/navigation/leftnav.phtml"/>
+        		<!--<block type="catalog/leftnavigation" name="catalog.leftcat" before="-" template="catalog/navigation/leftnav.phtml"/>-->
             <block type="catalog/navigation" name="catalog.leftnav" after="catalog.leftcat" template="catalog/navigation/left.phtml"/>
         </reference>
         <reference name="content">
@@ -107,7 +107,7 @@ Category layered navigation layout
             
         </reference>         
         <reference name="left">
-        	 	<block type="catalog/leftnavigation" name="catalog.leftcat" before="-" template="catalog/navigation/leftnav.phtml"/>
+        	 	<!--<block type="catalog/leftnavigation" name="catalog.leftcat" before="-" template="catalog/navigation/leftnav.phtml"/>-->
             <block type="catalog/layer_view" name="catalog.leftnav" after="catalog.leftcat"  template="catalog/layer/view.phtml"/>
         </reference>
         <reference name="content">
