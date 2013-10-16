@@ -1011,7 +1011,7 @@ tr.summary-details-excluded { font-style:italic; }
 	float: left;
 	margin: 0.35em 0 0;
 	position: relative;
-	width: 60%;
+	/*width: 60%; for fix search button in Chrome Chinese Store*/ 
 }
 
 .header .col1 { 
