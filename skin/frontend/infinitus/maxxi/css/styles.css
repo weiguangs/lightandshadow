@@ -436,7 +436,7 @@ p.required { font-size:11px; text-align:right; color:#EB340A; }
 .notice-msg { border-color:#fcd344; background-color:#fafaec; background-image:url(../images/i_msg-note.gif); color:#3d6611; }
 
 /* BreadCrumbs */
-.breadcrumbs { font-size:11px; line-height:1.25; margin:0 0 10px; }
+.breadcrumbs { font-size:12px; line-height:1.25; margin:0 0 10px; }
 .breadcrumbs li { display:inline; }
 .breadcrumbs li strong { font-weight:bold; }
 .breadcrumbs li span {
@@ -905,7 +905,6 @@ tr.summary-details-excluded { font-style:italic; }
 .dropdown .label {
 	padding:3px 4px;
 	z-index:99999;
-	position:relative;
 }
 .dropdown .text {
 	background:url(../images/grey-arrow-down.png) 100% 9px no-repeat;
@@ -945,7 +944,7 @@ tr.summary-details-excluded { font-style:italic; }
 /* Language switcher
 -------------------------------------------------------------- */
 .lang-switcher {
-	padding-left:20px;
+	padding-left:200px;
 	background-position:0 7px;
 	background-repeat:no-repeat;
 	margin-right: 2px;
@@ -982,12 +981,11 @@ tr.summary-details-excluded { font-style:italic; }
 
 .header .header-top {
     text-align: right;
-	border-bottom: 1px solid #DFDFDF;
 	overflow: auto;
 }
 
 .header .header-bottom {
-	margin: 1em 0 0 0;
+
 }
 
 
@@ -1467,8 +1465,8 @@ tr.summary-details-excluded { font-style:italic; }
 .home-content .product-flexslider ul.slides li.item {}
 .defaut-col4 {
 	margin: 5px auto !important;
-	max-width: 976px;
-	width: 100%;
+	max-width: 990px;
+	width: 110%;
 }
 .defaut-col4 li.item {
 	margin: 5px !important;
@@ -1912,7 +1910,7 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 
 /* View Type: Grid */
 .products-grid {position:relative; margin:0;}
-.products-grid li.item { position: relative; float:left; margin: 10px 10px; clear: none;}
+.products-grid li.item { position: relative; float:left; margin: 6px 6px; clear: none;}
 .list-col3.products-grid li.item { }
 .list-col4{ margin: 0 auto;}
 .list-col4.products-grid li.item {padding: 5px 5px;margin: 5px 0;}
@@ -1988,11 +1986,11 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 }
 .products-grid .item .socialToolBar {
     background-color: gray;
-    height: 159px;
+    height: 90px;
     padding: 8px 10px;
     position: absolute;
-    left: 0px;
-    top: 158px;
+    left: 3px;
+    top: 226px;
     width: 210px;
     display: none;
     z-index: 9;
@@ -2010,7 +2008,7 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 	z-index: 9;
 }
 .products-grid .item:hover .ShowTool {
-    opacity: 1;
+    opacity: 0.8;
     bottom: 5px;
 }
 .home-content .products-grid .item .socialCt {
@@ -2018,10 +2016,10 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 }
 .home-content .products-grid .item .socialToolBar {
     background-color: gray;
-    top: 317px;;
-    left: 0px;
-    height: 159px;
-    opacity: 0.6;
+    top: 386px;;
+    left: 3px;
+    height: 90px;
+    opacity: 0.8;
     position: absolute;
     width: 210px;
     display: none;
@@ -2035,6 +2033,7 @@ a.slider-arrows:hover { background-color:#9b0e11;}
 }
 .products-grid .item:hover .socialToolBar {
     display: block;
+    opacity: 0.8;
 }
 .products-grid .item .ShowTool {
 	position: absolute;
@@ -2318,7 +2317,7 @@ ul.products-grid li.item h3.product-name a:hover {
 .socialToolBar .price-box { 
 	display: block;
 	position: absolute;
-	top: 85px;
+	top: 45px;
 }
 .socialToolBar .price-box .regular-price  .price { color:#fff; }
 .regular-price .price {font-family: 'Times New Roman',serif; font-size:20px; color:#000; }
@@ -2337,7 +2336,7 @@ ul.products-grid li.item h3.product-name a:hover {
 	width: 210px;
 	height: 20px;
 	line-height: 20px;
-	top: 149px;
+	top: 80px;
 	left: 5px;
 }
 
@@ -2606,8 +2605,13 @@ ul.products-grid li.item h3.product-name a:hover {
 	margin-bottom: 10px;
 }
 /* Product Shop */
-.product-view .product-shop { float:right; width:330px; margin-right: 20px;}
-.col1-layout .product-view .product-shop { float:left; width:40.082%; }
+.product-view .product-shop { 
+	float:right; 
+	width:330px; 
+	margin-right: 20px;
+	margin-left: 20px;
+}
+.col1-layout .product-view .product-shop { float:left; width:50%; }
 .col3-layout .product-view .product-shop { float:none; width:auto; }
 .product-view .product-shop .product-name { margin:0 0 10px; }
 .product-view .product-shop .product-name h1 {margin:0; font-size: 30px; font-weight: normal; line-height: 1.15em;}
